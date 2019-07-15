@@ -18,6 +18,10 @@
 			reg = <0x41200000 0x300000>;
 			no-map;
 		};
+		rsvd@bfc00000 {
+			reg = <0xbfc00000 0x400000>;
+			reusable;
+		};
 	};
 
 	aliases {
@@ -25,10 +29,10 @@
 		mdio-gpio0 = &mdio0;
 		sdcc1 = &sdcc1;
 
-		led-boot = &sys;
+		/*led-boot = &sys;
 		led-failsafe = &sys;
 		led-running = &sys;
-		led-upgrade = &sys;
+		led-upgrade = &sys;*/
 	};
 
 	chosen {
@@ -158,7 +162,8 @@
 				cs-gpios = <&qcom_pinmux 20 GPIO_ACTIVE_HIGH>;
 
 				flash: m25p80@0 {
-					compatible = "spansion,s25fl256s0", "spi-flash";
+					compatible = "spansion,s25fl128s";
+					/*"spansion,s25fl256s0", "spi-flash";*/
 					#address-cells = <1>;
 					#size-cells = <1>;
 					spi-max-frequency = <50000000>;
